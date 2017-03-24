@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<a href="www.baidu.com">百度</a>
+<script>
+    //布尔
+    var falseObject=new Boolean(false);
+    console.log(falseObject);//Boolean {[[PrimitiveValue]]: false}
+//数值
+    var num=4.006;
+    console.log(num.toFixed(2)); //4.01
+    console.log(typeof num.toFixed(2)); //string
+    console.log(num.toExponential(2));//4.01e+0
+    var num2=990;
+    console.log(num2.toPrecision(1));
+    console.log(num2.toPrecision(2));
+    console.log(num2.toPrecision(3));
+
+    var s1='some text';
+    var s2=s1.substring(2,6);
+    console.log(s2);//me t
+    var s3=String('helo everyone'); //string
+    var s3=new String('helo everyone');
+    //String {0: "h", 1: "e", 2: "l", 3: "o", 4: " ", 5: "e", 6: "v", 7: "e", 8: "r", 9: "y", 10: "o", 11: "n", 12: "e", length: 13, [[PrimitiveValue]]: "helo everyone"}
+    console.log(s3);
+    console.log(s3.constructor) ;//function String() { [native code] }
+    console.log(s3 instanceof String);//true
+    console.log(s1.length);
+//    字符方法
+    console.log(s1.charAt(5));//t
+    console.log(s1.charCodeAt(5));//116
+    console.log(s1[5]);//t
+//    字符串方法
+    console.log(s1.concat(' i love you'));
+    console.log(s1.concat(' i love you',' cup'));
+    console.log(s1.slice(3));
+    console.log(s1.substring(3));
+    console.log(s1.substr(3));
+    console.log(s1.slice(3,6));
+    console.log(s1.substring(3,6));
+    console.log(s1.substr(3,6));
+    console.log(s1.slice(-3));
+    console.log(s1.substring(-3));
+    console.log(s1.substr(-3));
+    console.log(s1.slice(3,-4));
+    console.log(s1.substring(3,-4));
+    console.log(s1.substr(3,-4));
+    var s1='some text';
+    console.log(s1.indexOf('o'));
+    console.log(s1.lastIndexOf('t'));
+
+    var stringValue='Taday is a good day, sky is very blue,has an good passion!';
+    var posArr=[],pos=0;
+    do{
+        pos=stringValue.indexOf('a',pos);
+        if(pos>-1){
+            posArr.push(pos);
+        }
+        pos+=1;
+    }
+    while(pos>0);
+    console.log(posArr);
+
+    var str1='  hello world   ';
+    var str2=str1.trim();
+    var str3=str1.trimRight();
+    console.log(str2);
+    console.log(str3);
+    var str4=str1.toUpperCase();
+    var str5=str1.toLocaleUpperCase();
+    var str6=str1.toLowerCase();
+    console.log(str4);
+    console.log(str5);
+    console.log(str6);
+
+    var text='cat,bat,dat,cat,bat,dat,';
+    var patt=/.at/ig;
+    var matches=text.match(patt);
+    console.log(patt.lastIndex);
+    console.log(matches);
+    var exec=patt.exec(text);
+    console.log(exec);
+    var result=text.replace('at','pt');
+    var result2=text.replace(/at/ig,'pt');
+    console.log(result);
+    console.log(result2);
+    var matches1=text.replace(/(.at)/ig,'word($1)');
+    console.log(matches1);
+
+    var text='<p class=\'greeting\'>Hello world!</p>'
+    function htmlEscape(text){
+        return text.replace(/[<>"&]/g,function(match,pos,originalText){
+            switch(match){
+                case '<':
+                    return '&lt;';
+                case '>':
+                    return '&gt;';
+                case '"':
+                    return '&amp;';
+                case '\"':
+                    return '&quot;';
+            }
+        })
+    }
+    console.log(htmlEscape(text));
+
+    var colorText='blue,red,green,orange';
+    var colorArr=colorText.split(',',2);
+    console.log(colorArr);
+
+    var stringValue='yellow';
+    console.log(stringValue.localeCompare('bread'));
+    console.log(String.fromCharCode(123,34,97,114,79,67));
+    var uri='http://www.baidu.com /haixing#@4%.htm'
+    var encode=encodeURI(uri);
+    var encodeC=encodeURIComponent(uri)
+    console.log(encode);
+    console.log(encodeC);
+    console.log(decodeURI(encode));
+    console.log(decodeURIComponent(encodeC));
+
+    var global=function(){
+        return this;
+    };
+    console.log(global())
+    console.log(global())
+    console.log(Math.E)
+    console.log(Math.LN10)
+    console.log(Math.LN2)
+    console.log(Math.LOG10E)
+    console.log(Math.LOG2E)
+    console.log(Math.PI)
+    console.log(Math.SQRT1_2)
+    console.log(Math.SQRT2)
+    console.log(Math.max(3,7,9,4))
+    console.log(Math.min(3,6,8,3,8))
+
+    var arr=[3,6,8,9,4,456,9,45,4];
+    var max=Math.max.apply(Math,arr)
+    console.log(max)
+
+    console.log(Math.ceil(34.5))
+    console.log(Math.ceil(34.1))
+    console.log(Math.floor(34.5))
+    console.log(Math.floor(34.1))
+    console.log(Math.round(34.5))
+    console.log(Math.round(34.1))
+
+    console.log(Math.random());
+    var num=Math.floor(Math.random()*10+1);
+    console.log(num)
+    console.log(Math.abs(-3.6))
+    console.log(Math.exp(3))
+    console.log(Math.log(10))
+    console.log(Math.pow(2,3))
+    console.log(Math.sqrt(9))
+    console.log(Math.sin(Math.PI/2))
+    console.log(Math.asin(1))
+//第六章 面向对象的程序设计
+    var obj={};
+    Object.defineProperty(obj,'name',{
+        value:'haixing',
+        writable:false,
+        enumerable:false,
+        configurable:false
+    })
+    obj.name='haili';
+    delete obj.name
+    console.log(obj);//Object {name: "haixing"}
+
+    var obj1={
+        _year:2004,
+        edition:1
+    }
+    Object.defineProperty(obj1,'year',{
+        get:function(){
+            return this._year;
+        },
+        set:function(newValue){
+            if(newValue>2004){
+                this._year=newValue;
+                this.edition+=newValue-2004;
+            }
+        }
+    })
+    console.log(obj1.year)
+    obj1.year=2007;
+    console.log(obj1.year)
+    console.log(obj1.edition)
+
+    var obj2={}
+    Object.defineProperties(obj2,{
+        _year:{
+            value:2004,
+            writable:true
+        },
+        edition:{
+            value:1,
+            writable:true
+        },
+        year:{
+            get:function(){
+                return this._year;
+            },
+            set:function(newValue){
+                if(newValue>2004){
+                    this._year=newValue;
+                    this.edition+=newValue-2004;
+                }
+            }
+        }
+    })
+    console.log(obj2.year)
+    obj2.year=2007;
+    console.log(obj2.year)
+    console.log(obj2.edition)
+    obj2Decripor=Object.getOwnPropertyDescriptor(obj2,'_year')
+    console.log(obj2Decripor.value)
+    console.log(obj2Decripor.writable)
+
+    //创建对象
+    //工厂模式
+    function creatPerson(name,age,job){
+        var o={};
+        o.name=name;
+        o.age=age;
+        o.job=job;
+        o.sayName=function(){
+//            alert(this.name)
+        };
+        return o;
+    }
+    var person1=creatPerson('haixing',28,'sofeware Engineer')
+    console.log(person1);
+
+    function CreatPerson2(name,age,job){
+        this.name=name;
+        this.age=age;
+        this.job=job;
+        this.sayName=sayName;
+    }
+    function sayName(){
+//        alert(this.name)
+    }
+    var person2=new CreatPerson2('haixing',24,'安全')
+    console.log(person2)
+    var person3={};
+    CreatPerson2.apply(person3,['haili',25,'beauty'])
+    console.log(person3);
+    console.log(sayName.prototype.constructor);
+    console.log(sayName.prototype instanceof sayName);//false
+    console.log(person2.constructor)
+
+    function Person(){
+
+    }
+    Person.prototype={
+        name:'Nicholas',
+        age:29,
+        job:'Software Engineer',
+        sayName:function(){
+//            alert(this.name)
+        },
+        friend:['hello',23]
+    };
+    var person4=new Person();
+    console.log(person4.__proto__)
+    console.log(person4.__proto__===Person.prototype);//true
+    console.log(Person.prototype.isPrototypeOf(person4));//true
+    console.log(Object.getPrototypeOf(person4)===Person.prototype);//true
+    console.log(person4.hasOwnProperty('name'));//false
+    person4.name='haixing';
+    console.log(person4.hasOwnProperty('name'));//true
+    console.log('age' in person4);//true
+    var keys=Object.keys(person4);
+    console.log(keys)
+    var keys2=Object.keys(Person.prototype);
+    console.log(keys2);//["name", "age", "job", "sayName"]
+    console.log(Object.getOwnPropertyNames(person4))
+//    alert(Object.getOwnPropertyNames(Person.prototype))
+    console.log(Person.prototype.constructor);//Object() { [native code] }
+
+    var str5='hello'
+    String.prototype.startsWitch=function(text){
+        return this.indexOf(text)==0
+    }
+//    alert(str5.startsWitch('he'))
+
+    person5=new Person();
+    person4.__proto__.age=30;
+    console.log(person5.age)
+    person4.friend.push(5)
+    console.log(person4.__proto__)
+    console.log(person5.__proto__)
+
+    function Person2(name,age,job){
+        this.name=name;
+        this.age=age;
+        this.job=job;
+        this.friend=['jim','Lily'];
+    }
+    Person2.prototype={
+        constructor:Person2,
+        sayName:function(){
+//            alert(this.name)
+        }
+    };
+    var people1=new Person2('haixing',24,'安全');
+    var people2=new Person2('Lily',28,'会计');
+    people1.friend.push('HanMei');
+    console.log(people1);
+    console.log(people2);
+    people1.sayName()
+
+    function SpecialArray(){
+        var values=new Array();
+        values.push.apply(values,arguments);
+        values.toPipedString=function(){
+            return this.join('|')
+        }
+        return values
+    }
+    var colors=new SpecialArray('red','blue','green');
+    console.log(colors)
+
+//    function superType(){
+//        this.property=true;
+//        this.colors=['blue','red','green']
+//    }
+//    superType.prototype.getSuperValue=function(){
+//        return this.property;
+//    }
+//    function subType(){
+//        superType.call(this);
+//        this.subProperty=false;
+//    }
+//    subType.prototype=new superType();
+//    subType.prototype.constructor=subType;
+//    subType.prototype.getSubValue=function(){
+//        return this.subProperty;
+//    }
+//    instance=new subType();
+//    subType.prototype.getSuperValue=function(){
+//        return false
+//    }
+//    console.log(instance.getSuperValue());//false
+//    console.log(new superType().getSuperValue());//true
+//
+//    console.log(instance.property)
+//    console.log(instance.subProperty)
+//    console.log(instance.getSuperValue())
+//    console.log(instance.constructor)
+//
+//    person=Object.create(Person,{
+//        name:{
+//
+//        }
+//    })
+    function superType(name){
+        this.name=name;
+        this.colors=['blue','red','green'];
+    }
+    superType.prototype.sayName=function(){
+//        alert(this.name)
+    }
+    function subType(name,age){
+        superType.call(this,name);
+        this.age=age;
+    }
+    function inheritPrototype(superType,subType){
+        var o=Object(superType.prototype);
+        o.constructor=subType;
+        subType.prototype=o;
+    }
+    inheritPrototype(superType,subType);
+    intance=new subType('haixing',27);
+    intance2=new subType('haili',25);
+    intance.colors.push('yellow');
+    console.log(intance);
+    console.log(intance2);
+
+    function createFunctions(){
+        var result=new Array();
+        for(var i=0;i<10;i++){
+            result[i]=function(){
+                return i;
+            };
+        }
+        return result;
+    }
+    var arrF=createFunctions()
+//    alert(arrF[1]())
+
+    function f1(){
+        var a= 7,b=9;
+        return function(){
+            return a+b
+        }
+    }
+    var sum=f1();
+    console.log(sum())
+
+    var age=29;
+    window.color='red';
+    delete age;
+    delete window.age;
+    delete window.color;
+    console.log(age);
+    console.log(window.color);
+
+    var a=window.b;
+    console.log(a);
+    console.log(window.top);
+    console.log(parent);
+    console.log(self);
+    console.log(window.frames[0]);
+    console.log(window.name);
+
+    moveTo(300,300);
+    var leftPos=(typeof window.screenLeft=='number')?window.screenLeft:window.screenX;
+    var topPos=(typeof window.screenTop=='number')?window.screenTop:window.screenY;
+    console.log(leftPos);
+    console.log(topPos);
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+    console.log(window.outerWidth);
+    console.log(window.outerHeight);
+    console.log(document.documentElement.clientWidth);
+    console.log(document.documentElement.clientHeight);
+    console.log(document.body.clientHeight);
+    console.log(document.body.clientHeight);
+
+    window.resizeTo(300,300);
+    window.resizeBy(100,50);
+//    var wroxWin=window.open('javascript DOM.html','hello',"width=400,height=400,top=140,left=400,resizable=no,scrollbars=yes,status=no,toobar=yes,menubar=yes,location=no")
+//    wroxWin.resizeTo(1000,600)
+//    console.log(wroxWin.opener)
+//    if(wroxWin==null){
+//        alert('closed')
+//    }
+//    wroxWin.close()
+
+    var timeoutId=setTimeout(function(){
+        alert('a')
+    },1000)
+    clearTimeout(timeoutId)
+    var num= 0,max=10;
+    var intervalId;
+//    function incrementNum(){
+//        num++;
+//        if(num==max){
+//            clearTimeout(intervalId)
+//            alert('done')
+//        }
+//    }
+//    intervalId=setInterval(incrementNum,500);
+
+//    function incrementNum(){
+//        num++;
+//        if(num<max){
+//            setTimeout(arguments.callee,500)
+//        }else{
+////            clearInterval(intervalId);
+//            alert('done')
+//        }
+//    }
+//    setTimeout(incrementNum,500)
+
+//    if(confirm('are you sure?')){
+//        console.log('sure')
+//    }else{
+//        alert('cancel')
+//    }
+
+//var result=prompt('what is your name?','haixing');
+//    if(result!=null){
+//        alert(result)
+//    }else{
+//        alert(null)
+//    }
+
+//    window.print()
+//    window.find();
+    console.log(window.location)
+    console.log(window.location.toString())
+   function getSearchArr(){
+       var arr1=[],arr2=[];
+       var name,value;
+       var qs=window.location.search;
+       if(qs){
+           qs=qs.substring(1);
+           if(qs.indexOf('&')!=-1){
+               arr1=qs.split('&');
+               for(var i=0;i<arr1.length;i++){
+                   name=arr1[i].split('=')[0];
+                   value=arr1[i].split('=')[1];
+                   name=decodeURIComponent(name);
+                   value=decodeURIComponent(value);
+                   arr2[name]=value;
+               }
+           }
+       }
+       return arr2
+   }
+//    location.assign('javascript DOM.html')
+//    location='javascript DOM.html'
+   // location.href='www.baidu.com'
+
+//setTimeout(function(){
+//    location.replace('http://www.baidu.com')
+//},1000)
+   // location.reload();
+   // location.reload(true);
+
+    console.log(navigator.appCodeName);
+    // console.log(navigator.plugins);
+// function hasPlugin(name){
+//    name=name.toLowerCase();
+//    for(var i=0;i<navigator.plugins.length;i++){
+//        if(navigator.plugins[i].name.toLowerCase().indexOf(name)!=-1){
+//            return true
+//        }
+//    }
+//    return false;
+
+    try{
+        new ActiveXObject(name);
+        return true
+    }catch(e){
+        return false
+    }
+}
+    console.log(hasPlugin('pdf'))
+
+//    navigator.registerContentHandler('application/rss+xml','http://somereader.com?feed=%s','Some Reader');
+//    navigator.registerProtocolHandler('mailto','http://www.somemailclient.com?cmd=%s','Some Mail Client');
+
+    console.log(screen.width)
+    console.log(screen.height)
+//    history.go('DOM.html')
+//history.go(1)
+//    history.forward()
+    console.log(history.length)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

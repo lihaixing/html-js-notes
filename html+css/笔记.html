@@ -1,0 +1,1056 @@
+#HTML+CSS
+1.下拉菜单
+    <li class="note">
+        <a href="MyNotes.html">我的笔记</a>
+        <ul class="noteList">
+            <li><a href="">bootstrap入门</a></li>
+            <li><a href="">Html5+Css3</a></li>
+        </ul>
+    </li>
+    <style>
+        .note:hover .noteList {
+            display: block;
+            background-color: #14edff;
+        }
+    </style>
+
+2.列表排序 嵌套
+    <!--type属性值可以为1，A，a，I，i-->
+    <ol type="A">
+        <li>麦子学院！非常棒的在线IT培训！</li>
+        <li>麦子学院！非常棒的在线IT培训！</li>
+        <li>麦子学院！非常棒的在线IT培训！</li>
+        <li>麦子学院！非常棒的在线IT培训！</li>
+    </ol>
+    <ol type="i">
+        <li>麦子学院！非常棒的在线IT培训！</li>
+        <!--type=1使得此列表序号显示为阿拉伯数字-->
+        <li type="1">麦子学院！非常棒的在线IT培训！</li>
+        <li>麦子学院！非常棒的在线IT培训！</li>
+        <li>麦子学院！非常棒的在线IT培训！</li>
+    </ol>
+    <ol type="a">
+        <li>麦子学院！非常棒的在线IT培训！</li>
+        <!--value=5使得从此列表开始，起始序号为5,新的序列数字起始值-->
+        <li value="5">麦子学院！非常棒的在线IT培训！</li>
+        <li>麦子学院！非常棒的在线IT培训！</li>
+        <li>麦子学院！非常棒的在线IT培训！</li>
+    </ol>
+    <ol type="A">
+        <li>麦子学院！非常棒的在线IT培训！</li>
+        <li>
+        B选项
+            <!--列表可以嵌套-->
+            <ol type="a">
+                <li>麦子学院！非常棒的在线IT培训！</li><hr>
+                <li>麦子学院！非常棒的在线IT培训！</li>
+                <li>麦子学院！非常棒的在线IT培训！</li>
+                <li>麦子学院！非常棒的在线IT培训！</li>
+            </ol>
+        </li>
+        <li>麦子学院！非常棒的在线IT培训！</li>
+        <li>麦子学院！非常棒的在线IT培训！</li>
+    </ol>
+    html新增ol属性
+    <ol START="8" TYPE="A">
+        <li><a href="">有</a></li>
+        <li><a href="">有</a></li>
+        <li value="5" type="I"><a href="">有</a></li>
+        <li><a href="">有</a></li>
+    </ol>
+
+    <ol START="8" reversed="reversed">
+        <li><a href="">有</a></li>
+        <li><a href="">有</a></li>
+        <li><a href="">有</a></li>
+        <li><a href="">有</a></li>
+    </ol>
+2.1 列表样式
+    <style>
+        ul li{
+            list-style-position:outside;/*放置在文本以外,不作为文本,默认,还可以用inherit*/
+            list-style-image:url(images/arr.gif);/*属性值有none(无标记),url(标记的图像路径),inherit*/
+            list-style-type:lower-latin;
+            list-style:upper-alpha outside;/*简写方式:list-style:type position imge/
+        }
+    </style>
+
+3.定义型列表
+    <!--<dl><dt><dd>定义型列表，使用场合，对列表条目进行简短说明-->
+    <dl>
+        <dt>软件说明：</dt>
+        <dd>简单介绍软件的功能及其应用</dd>
+        <dt>软件界面：</dt>
+        <dd>用于选择软件的外观</dd>
+    </dl>
+4.字体下标记和上标记
+    <!--<sub>/<sup>是字体下标记和上标记-->
+    2<sup>3</sup>
+    2<sub><b>2</b></sub>
+    <b>2<sup>3</sup></b>
+
+5 粗字体 倾斜字体
+    <b>粗字体</b>
+    <!--<cite>是引用方式的字体,通常是斜体-->
+    <cite>麦子学院</cite>
+    <!--<em>表示强调,通常是斜体-->
+    <em>麦子学院</em>
+    <!--<strong>表示强调,通常是粗体字-->
+    <strong>麦子学院</strong>
+    <!--<small><big>为小字体标记和大字体标记，可嵌套使用，会更小更大，直到最小最大-->
+    <small>麦子学院</small>
+6 超链接
+    <!--超链接的target属性，target定义超链接的打开方式，属性有四种:
+    	_blank在一个新窗口打开，_sefl(默认值)在当前窗口打开，
+    	_parent在父窗口中打开页面，_top在顶层窗口中打开文件。-->
+    <a href="第一节课/demo1.html"  target="_blank">demo1的页面</a>
+    <style>
+        a:link{color:red}/*伪元素选择器（网址）正常连接的样式*/
+        a:hover{color:blue}/*鼠标移上去的样式*/
+        a:active{color:green}/*点击连接时的样式*/
+        a:visited{color:#ccc}/*已经采访过的链接样式*/
+    </style>
+
+7 表格
+    <!--<tatle>属性值可有
+    width height border，表格的宽度和高度可以是像素（px）也可以是父级元素的百分百（%），
+    border为表格外边框宽度(包括每个单元格），
+    align是表格的显示位置可为left（默认）、center、right，
+    cellspacing属性是单元格之间的距离，单位像素，默认2，
+    cellpadding属性是单元格内容与单元格边框的显示距离，单位像素
+    frame属性控制表格边框最外层的四条线框，属性值有
+             1void（默认）无边框2above仅顶部有边框3below仅底部有边框4hsides仅顶部和底部有边框
+             5lhs仅有左侧边框6rhs仅有右侧边框7vsides仅左右侧有边框8box包含全部四个边框
+             9border包含全部四个边框
+    rules属性是控制是否显示以及如何显示单元格之间的分割线，属性值有
+            1none(默认)表示无分割线2all包含所有的分割线3rows仅有行分割线4cols仅有列分割线
+            5groups仅在行组与列组之间有分割线-->
+    <table width="960" height="300"  align="center" valign="middle"
+           cellspacing="5" cellpadding="5" frame="border" rules="all" border="solid 1px black">
+
+        <!--表格标题,位于table之后，tr之前,caption属性只有一个align，属性值可谓top(默认) bottom left right-->
+        <caption align="top">表格的标题</caption>
+
+        <!--定义表格的一行，表格的每一行都有一对<tr>,每行可嵌套多个<th>和<td>，<tr>属性有
+        bgcolor;
+        valign是设置垂直方向的显示方式1bottom2top3middle
+        align是设置水平方向的显示方式1left2right3center-->
+        <tr bgcolor="yellow" align="center" valign="middle">
+
+            <!--<th>是表头标记，通常位于首行或首列，通常会默认加粗,属性有设置单元格属性
+            bgcolor align valign width height rowspan(单元格所占行数）cols单元格所占列数-->
+            <th bgcolor="red" align="center" valign="middle"  width="100px" height="100px" colspan="1" rowspan="1">班级</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>成绩</th>
+        </tr>
+        <tr bgcolor="green" align="center" valign="middle">
+            <!--<td>是数据标记，表示表格的具体数据-->
+            <td>四年级一班</td>
+            <td>张三</td>
+            <td>16</td>
+            <td>80</td>
+        </tr>
+        <tr align="center">
+            <td>四年级一班</td>
+            <td>李四</td>
+            <td>13</td>
+            <td>90</td>
+        </tr>
+    </table>
+8 表单设计
+    <!--form定义表单的开始位置和结束位置，表单提交的内容就是<form></form>中的内容,属性有
+            1action="服务器端地址(接受表单内容的地址)"，如果为空，则使用当前url地址，如果不需要，定义为no
+            2name=表单名称
+            3method=传输数据的方式get(默认)/post , get只提交表单中的内容不安全，post条件整个表单
+            4-->
+<!--注释：placeholder 属性适用于以下的 <input> 类型：text, number,search, url, telephone, email 以及 password。&ndash;&gt;-->
+    <form  name="QQ登陆"  action="2.html"  method='post'>
+        <!--2name定义控件的名称，3value初始化值，打开浏览器时文本框中的内容，
+        4size设置控件的长度，5maxlength输入框中最大允许输入的字符数-->
+
+        账号：<input type="text" name="zhanghao" value="初始化值" size="20"><br/><br/>
+        密码：<input type="password" name="mima" size="10" maxlength="10"><br/><br/>
+
+        <!--当type=radio/checkbox，表单为单选框/复选框(可以取消选项),
+        都可以用checked属性设置默认选项，当选项中name相同时，表示只能选其一-->
+        兴趣爱好：<input type="radio" name="yuanqiu">篮球
+        <input type="radio" name="yumoqiu" checked>羽毛球
+        <input type="radio" name="yuanqiu">足球<br/><br/>
+
+        兴趣爱好：<input type="checkbox" name="lanqiu" checked>篮球
+        <input type="checkbox" name="yumoqiu">羽毛球
+        <input type="checkbox" name="zuqiu">足球<br/><br/>
+
+        自我介绍:<br/>
+        <!--textarea为多行文本域,value属性的作业不知-->
+                <textarea name="ziwojieshao" rows="10" cols="60" value="9">
+                请输入自我介绍
+                </textarea><br/><br/>
+        籍贯:
+        <!-- select表示菜单下拉列表域，size属性为列表的显示行数，multiple为多选-->
+        <select name="jiguan" size="5" multiple>
+            <!-- option指定一个选项，value给选项赋值（提供给服务器），selected为默认选项 -->
+            <option value="shanxi">山西</option>
+            <option value="henan" selected>河南</option>
+            <option value="gansu">甘肃</option>
+        </select><br/><br/>
+
+        <!-- type=hidden时，表示隐藏内容 -->
+        <input type="hidden" name="篮球" value="隐藏的内容">
+
+        <!--input中type=submit提交/reset重置/button普通按钮-->
+        <input type="submit" value="提交">
+        <input type="reset" value="重置">
+        <input type="button" value="普通">
+    </form>
+9 字体font样式
+    <style>
+        p{font:14px/24px 微软雅黑;}
+        .d{font-style:oblique} /*倾斜*/
+        .e{font-style:inherit} /*继承父元素*/
+        .a{font-variant:small-caps} /*小型大写字母显示文本，其他选项normal，inherit*/
+    </style>
+
+10 背景样式属性
+    <style>
+        div{
+            /*background-color:rgb(255,255,255)};*/
+            background-image:url(image/bg.gif);
+            background-repeat:no-repeat;  /*选项有repeat,repeat-x,repeat-y,no-repeat*/
+            background-position:center 20px; /*纵向(top,center,bottom) 横向(left center right),也可用数值代替
+            如20px 40px*/
+            background:red url(image/bg.gif) no-repeat center 20px; /*简写方式,颜色 背景图片 重复 位置*/
+        }
+    </style>
+
+11 文本属性
+    text-align:center;/*横向排列,相当于左对齐还是右对齐，属性有left,center,right*/
+    letter-spacing:normal; /*字符间距,可用normal,inherit,px,也用负值*/
+    word-spacing:10px;/*单词间距,可以用normal,inherit*/
+    direction:ltr; /*文本方向,ltr从左到右,rtl从右到左,inherit继承*/
+    text-transform:capitalize;/*文本大小写,none(默认),capitalize(每个单词大写字母开头),
+    uppercase(仅有大写字母),lowercase(仅有小写字母),inherit(继承父元素)*/
+12 悬浮窗口
+    .fixed{
+    position:fixed;/*浏览器窗口进行定位，位置不随页面滚动而变动，继承inherit和没有定位static
+    就恢复到默认*/
+    background-color:#ff6600;
+    color:#fff;
+    top:100px;
+    z-index:1;/*层覆盖先后顺序同级,谁在后面谁就显示在上面,
+    但是设置了z-index默认为0,只要比0大就会优先，谁睡数值大谁优先,也可以为2,3等
+    display:none;*/
+    }
+13 溢出处理 清除浮动
+    overflow:auto;/*溢出处理,hidden隐藏溢出的内容scroll无论内容多少,添加滚动条
+    auto超出之后自动添加滚动条*/
+    清除浮动就是前两个div左浮动后，最后一个div自动回左浮动，所以clear:both;
+14 IE测试
+    <!--只用在ie9以下中-->
+    <!--[if !ie 8]>这不是IE8<![endif]-->
+    <!--[if ie 9]>这是IE9<![endif]-->
+    <!--[if gt ie 6]>大于ie6<![endif]-->
+    <!--[if gte ie 6]>大于等于ie6<![endif]-->
+    <!--[if lt ie 7]>小于ie7<![endif]-->
+    <!--[if (gt ie 6)&(lt ie 8)]>大于ie6且小于IE8<![endif]-->
+    <!--[if (gt ie 7)|(lt ie 6)]>大于IE7或者小于ie6<![endif]-->
+15 HTML5新元素
+15.1 创建时间：<time datetime="2014/8/24T21:00">一小时前</time>
+            <time datetime="2014-9-28">2014年9月28</time>
+            <time datetime="2014-9-28">9月28</time> <!--不写年份-->
+            <time datetime="2014-9-28">今天的时间</time>
+            <time datetime="2014-9-28T22:30">2014年9月28晚上10点</time> <!--加上时间-->
+            <time datetime="2014-9-28T22:30Z">UTC标准时间2014年9月28晚上10点</time>
+            <time datetime="2014-9-28T22:30+8:00">中国时间2014年9月28晚上10点</time> <!--加上时区-->
+            <!--表示这篇文章的发布时间-->
+        <p>发布时间：<time datetime="2014-09-28" pubdate="pubdate">2014年9月28</time></p>
+15.2 figure图片元素 title 点上去会显示内容
+        <figure> <!--里面必须有figcaption标题，figure元素表示独立的内容，去掉不影响-->
+            <img src="1.jpg" alt="fengjing1" title="风景1"/>
+            <img src="2.jpg" alt="fengjing2" title="风景2"/>
+            <img src="3.jpg" alt="fengjing3" title="风景3"/>
+            <figcaption>风景</figcaption>
+        </figure>
+15.3 details和summary 包含隐藏元素
+        <details style="width:300px">
+            <summary>buttonHTML5视频教程</summary> <!--只被谷歌浏览器支持-->
+            <p><a href="">详细地址请看麦子学院官方网站</a></p>
+            <div><a href="">详细地址请看麦子学院官方网站</a></div>
+        </details>
+15.4 mark标记元素
+        <h1><a href="">全面覆盖<mark>html5</mark>/CSS3/JS等技术的web前端课程诞生了!</a></h1>
+15.5 progress完成工作进度条形图
+        当前完成工作量进度：
+        <progress max="100" value="25"></progress>
+15.6 meter规定范围内数值 在progress基础上控制颜色
+        <p>硬盘使用情况<meter value="43.9" max="119" min="0">43.9/119</meter>GB</p>
+        <p>硬盘实际使用情况 <meter value="20" max="119" min="0" low="50" high="70" optimum="80"></meter></p>
+        <!--optimum控制颜色，看是否在low与high之间-->
+15.7 canvas绘制图像 查看canvas.js文件
+        <body onload="draw1('canvas1');draw2('canvas2')">
+        <canvas id="canvas1" width="400px" height="400px"></canvas>
+        <canvas id="canvas2" width="800" height="400"></canvas>
+        //保存图形文件 放在draw函数中
+        window.location=canvas2.toDataURL('images/jpg');
+15.8 canvas绘制动画 查看canvas.js文件
+
+15.9 本地存储
+        <div>
+            <p id="msg"></p>
+            <input type="text" id="input"/>
+            <input type="button" value="保存数据" onclick="saveStorage('input')"/>
+            <input type="button" value="读取数据" onclick="loadStorage('msg')"/>
+            <input type="button" value="永久保存数据" onclick="saveStorage2('input')"/>
+            <input type="button" value="永久读取数据" onclick="loadStorage2('msg')"/>
+        </div>
+        <script>
+            function saveStorage(id){
+                var input=document.getElementById(id);
+                var str=input.value;
+                sessionStorage.setItem('mess',str);//临时储存
+
+            }
+            function loadStorage(id){
+                var msg=document.getElementById(id);
+                var mess=sessionStorage.getItem('mess');//临时读取
+                msg.innerHTML=mess;
+            }
+            function saveStorage2(id){
+                var input=document.getElementById(id);
+                var str=input.value;
+                localStorage.setItem('mess',str);//永久储存
+
+            }
+            function loadStorage2(id){
+                var msg=document.getElementById(id);
+                var mess=localStorage.getItem('mess');//永久读取
+                msg.innerHTML=mess;
+            }
+        </script>
+15.10 简单网页留言板
+        <div>
+            <h1>简单的网页留言板</h1>
+            <textarea id="text" value="" rows="10" cols="60">请输入留言...</textarea><br/>
+            <input type="button" onclick="saveStorage('text')" value="保存"/>
+            <input type="button" onclick="clearStorage('msg')" value="清除"/>
+            <input type="button" onclick="loadStorage('msg')" value="读取"/>
+        </div>
+        <script>
+            function saveStorage(id){
+                var input=document.getElementById(id).value;
+                var time=new Date().getTime();//1970到现在的毫秒数
+                localStorage.setItem(time,input);
+                alert('数据已经被保存');
+                loadStorage('msg');
+            }
+            function loadStorage(id){
+                var table='<table border="1">';
+                for(var i=0;i<localStorage.length;i++){
+                    var mess=localStorage.getItem(localStorage.key(i));
+                    var time=new Date();
+                    time.setTime(localStorage.key(i));
+                    var a=time.toGMTString();
+                    table+='<tr><td>第'+(i+1)+'条数据</td><td>'+mess+'</td><td>时间：'+a+'</td></tr>';
+                }
+                table+='</table>';
+                var msg=document.getElementById(id);
+                msg.innerHTML=table;
+            }
+            function clearStorage(id){
+                localStorage.clear();
+                alert("数据已经被成功删除！");
+                loadStorage(id);
+            }
+        </script>
+15.11 媒体播放
+        <div>
+            <audio src="素材/MP3.mp3" controls="controls" autoplay="autoplay">您的浏览器不支持audio</audio><br/>
+            <!--autoplay自动播放，controls是控制条-->
+            <video width="800" height="400" controls="controls" src="素材/video.m4v" autoplay="autoplay"></video>
+            <video controls="controls"> <!--兼容各种浏览器-->
+                <source src="素材/video.m4v" type="video/mp4"/>
+                <source src="素材/video.ogv" type="video/ogg"/>
+                <source src="素材/video.webm" type="video/webm"/>
+                <source src="素材/video.mp4"/>
+            </video>
+            <audio src="素材/MP3.mp3" preload="metadata" controls="controls"></audio><br/>
+            <audio src="素材/MP3.mp3" controls="controls"></audio><br/>
+            <!--preload是预缓存，none metadata只加载元数据 auto ,默认是缓冲-->
+            <video width="800" height="400" preload='none' controls="controls" src="素材/video.m4v" autoplay="autoplay"></video>
+            <video controls="controls" poster="http://s0.hao123img.com/res/r/image/2016-03-04/2ce5584ea8bb326dfb590ea1140da146.jpg" src="素材/video.m4v"></video>
+            <!--poster表示如果视频不能播放，用图片代替-->
+            <audio src="1素材/MP3.mp3" loop='loop' controls="controls"></audio><br/>
+            <!--loop表示可以循环播放，也适用video-->
+            <video id="video" src=""></video>
+        </div>
+        <script type='text/javascript'>
+            var video=document.getElementById('video');
+            video.addEventListener('error',function(){
+                var error=video.error;
+                switch(error.code){
+                    case 1:
+                        alert('取回过程被用户终止');
+                        break;
+                    case 2:
+                        alert('当下载时发生错误');
+                        break;
+                    case 3:
+                        alert('当解码时发生错误');
+                        break;
+                    case 4:
+                        alert('媒体不可用或不支持音频视频');
+                        break;
+                }
+            },false)
+        </script>
+15.8 HTML5拖放
+        <div id="cun" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <img id='tuo' src="html5.png" draggable="true" ondragstart="drag(event)" width="500" height="280" alt=""/>
+        <script type="text/javascript">
+            function drag(ev){
+                //ev.clearData();
+                ev.effeAllowed='none';
+                ev.dataTransfer.setData('text',ev.target.id);
+            }
+            function drop(ev){
+                ev.preventDefault();
+                var data=ev.dataTransfer.getData('text');
+                ev.target.appendChild(document.getElementById(data));
+            }
+            function allowDrop(ev){
+                ev.preventDefault();
+                ev.dropEffect='link';
+            }
+        </script>
+15.9 css3中新增选择器
+        /*属性选择器*/
+        <style>
+            [id*=section1]{ /*表示id属性包含section的元素*/
+                background-color:green;
+            }
+            [id^=b]{ /*开头为b的元素*/
+                background-color:blue;
+            }
+            [id$=\-1]{ /*结尾为-1,直接1不行，除非用引号*/
+                background-color:#777;
+            }
+            [id$=_1]{ /*结尾为_1*/
+                background-color:red;
+            }
+            [href$=html]:after{ /*after是追加的意思*/
+                content:'网页文件';
+                color:green;
+            }
+            [href$=jpg]:before{
+                content:'图片文件';
+                color:red;
+            }
+        </style>
+        /*伪类选择器和为元素*/
+        <style>
+            p:first-line{
+                color:red;
+            }
+            p:first-letter{
+                color:orange;
+                font-size: larger;
+            }
+        </style>
+        /*结构性类选择器*/
+        <style>
+            :root{ /*根元素选择器，指html*/
+                background-color: #d7ff6e;
+            }
+            body *:not(h1){ /*body取决于内容的多少，而且排除了h1*/
+                background-color: #952aff;
+            }
+            :empty{ /*自动将内容为空的地方设置为橙色*/
+                background-color:orange;
+            }
+            :target{ /*适用于超链接点击跳转到target*/
+                color:#fff;
+                background-color:black;
+            }
+        </style>
+        <div>
+            <a href="#A">A</a>
+            <a href="#B">B</a>
+            <a href="#C">C</a>
+            <a href="#D">D</a>
+            <div id="A">
+                <h2>标题</h2>
+                <p>内容.........</p>
+            </div>
+            <div id="B">
+                <h2>标题</h2>
+                <p>内容.........</p>
+            </div>
+            <div id="C">
+                <h2>标题</h2>
+                <p>内容.........</p>
+            </div>
+            <div id="D">
+                <h2>标题</h2>
+                <p>内容.........</p>
+            </div>
+        </div>
+        /*父元素的子元素,必须同级*/
+        <style>
+            li:first-child{ /*前两个都被选中*/
+                background-color:orange;
+            }
+            li:last-child{
+                background-color: #188b55;
+            }
+            li:nth-child(6){
+                color:mediumvioletred;
+            }
+            li:nth-child(odd){ /*基数*/
+                color:#d7ff6e;
+            }
+            li:nth-child(even){
+                color:royalblue;
+            }
+            li:nth-last-child(5){ /*倒数*/
+                 color:darkred;
+             }
+            h1:nth-child(5){ /*改成5，odd将不显示，因为对应的不是h1*/
+                color:red;
+            }
+            h1:nth-of-type(3){ /*排除了以上情况，从文中先找出，再计算第几个*/
+                background-color:blue;
+            }
+            h1:nth-last-of-type(odd){ /*倒数*/
+                background-color:green;
+            }
+            li:only-child{
+                background-color:green;
+            }
+        </style>
+        /*ui选择器*/
+        <style>
+            input[type='text']:focus{ /*鼠标上去后和visited相似*/
+                background:#ff6600;
+                color:white;
+            }
+            input[type='password']:disabled{
+                background:red;
+            }
+            input:read-only{
+                background:black;
+            }
+            #form1 input:checked{ /*当被选中时*/
+                outline:2px solid green; /*轮廓，在周围画条线，和border不一样*/
+            }
+            #form2 input:default{ /*给默认的选项添加，且取消选项也不消失,只支持火狐*/
+                outline:2px solid green;
+            }
+
+            #form3 input:indeterminate{/*指定没选中时的状态，选中后就消失了,只用在单选框*/
+                outline:2px solid green;
+            }
+            ::selection{ /*当文档被选中时显示的样式*/
+                background:blue;
+            }
+            input::selection{
+                color:red;
+            }
+            #form1 input:invalid{
+                background:red;
+            }
+            #form1 input:valid{ /*表示元素可以通过HTML5实现时的样式*/
+                background:green;
+            }
+            #form2 input:required{ /*必须输入*/
+                background:red;
+            }
+            #form2 input:optional{ /*可选的*/
+                background:blue;
+            }
+            #form3 input:invalid{
+                background:red;
+            }
+            #form3 input:in-range{
+                background:blue;
+            }
+            #form3 input:out-of-range{
+                background:red;
+            }
+            div~p{ /*表示div的同级p兄弟元素 只能选择下方的，不能选择上方的*/
+                color:red;
+            }
+        </style>
+        /*使用选择器插入内容*/
+        <style>
+            h2:nth-of-type(3):before{ /*排除掉第三个h2*/
+                content:none;
+            }
+            h2:nth-of-type(4):before{
+                content:url(xinren.gif) /*插入图片*/
+            }
+            /*插入计数器*/
+            h3:before{
+                content:'第'counter(dajsq)'讲 ';
+                color:red;
+            }
+            h3{
+                counter-increment:dajsq;
+            }
+            h4:before{
+                content:'第'counter(lajsq,lower-latin)'讲 ';
+                color:red;
+            }
+            h4{
+                counter-increment:lajsq;
+            }
+            /*插入分层计数器*/
+            h5:before{
+                content:counter(a);
+                color:red;
+            }
+            h5{
+                counter-increment:a;
+                counter-reset: b;/*重置计数器*/
+            }
+            h6:before{
+                content:counter(a)'-'counter(b);/*小编号中插入大编号*/
+                color:blue;
+            }
+            h6{
+                counter-increment:b;
+            }
+            /*在文字两边嵌套文字符号*/
+            h1:before{
+                content:open-quote; /*在文字两边嵌套文字符号*/
+            }
+            h1:after{
+                content:close-quote;
+            }
+            h1{
+                quotes:"（" "）" ;
+            }
+        </style>
+15.10 文字阴影和自动换行
+        <style>
+            h1{
+                text-shadow:5px 5px 3px red,30px 30px 3px blue;/*前两个参数为远离文字的横向距离和纵向距离,第三个参数为阴影模糊半径
+            颜色值可以放在前面，后两个参数可以去掉*/
+            }
+            p{
+                /*word-break: break-all;*/ /*keep-all使得文字在标点符号处换行，使英文单词不会断开，break-all会使英文单词断开*/
+                word-wrap: break-word; /*浏览器可以在长单词或URL地址内部进行换行*/
+            }
+        </style>
+15.11 服务器端字体和@font-face
+        <style>
+            @font-face {
+            font-family: b;
+            font-style: italic;
+            src:url(jpzk.otf);
+            }
+            @font-face {
+            font-family: b;
+            src:url(qtgg.otf);
+            }
+            h1{
+            font-family:b;
+            font-style: italic; /*没有这句将使用qtgg*/
+            }
+            @font-face{
+            font-family: Arial;
+            src:local('Arial')  /*显示客户端本地字体*/
+            }
+            #he{
+            font-family: Arial;
+
+            }
+            #she{
+            font-variant:small-caps;
+            font-weight:100;
+            font-stretch:semi-condensed /*设置文本横向拉伸变形*/
+            }
+        </style>
+15.12 inline-table list-item
+        <style>
+            table{
+                display:inline-table;/*会使文本和表格在一行显示*/
+                vertical-align:bottom;
+                width:400px; height:300px;
+                border:solid 5px red;
+            }
+            td{
+                border:solid 5px blue;
+                padding:0;
+            }
+            div{
+                list-style-type:circle;
+                display:list-item;/*把div当li*/
+                margin-left:30px;
+            }
+        </style>
+15.13 将div等变为表格相关元素
+        <style>
+            .table{
+                display:table;
+                border:solid 5px red;
+                width:300px;height:300px;
+            }
+            .table-caption{
+                display:table-caption;
+            }
+            .tbody{
+                display:table-row-group;
+            }
+            .tr{
+                display: table-row;
+            }
+            .td{
+                display:table-cell;
+                border:solid 3px blue;
+            }
+            .div1{
+                width:500px;height:500px;
+                background-color:blue;
+            }
+            .div2{
+                width:250px;margin:5px;
+                background-color:#ff1e00;
+                display:none;
+            }
+            .div1:hover .div2{
+                display:inline-block;
+            }
+        </style>
+        <div class="table">
+            <div class="table-caption">lalal</div>
+            <div class="tbody">
+                <div class="tr">
+                    <div class="td">1</div>
+                    <div class="td">1</div>
+                    <div class="td">1</div>
+                    <div class="td">1</div>
+                </div>
+                <div class="tr">
+                    <div class="td">2</div>
+                    <div class="td">2</div>
+                    <div class="td">2</div>
+                    <div class="td">2</div>
+                </div>
+                <div class="tr">
+                    <div class="td">3</div>
+                    <div class="td">3</div>
+                    <div class="td">3</div>
+                    <div class="td">3</div>
+                </div>
+                <div class="tr">
+                    <div class="td">3</div>
+                    <div class="td">3</div>
+                    <div class="td">3</div>
+                    <div class="td">3</div>
+                </div>
+            </div>
+        </div>
+15.14 文本超出 盒阴影 换行 overflow box-shadow
+        <style>
+            div{
+            overflow-x: hidden;
+            overflow-y:auto;
+            text-overflow:ellipsis;/*超出的用小点代替*/
+            white-space:nowrap;/*不换行*/
+            box-shadow:-20px -20px 5px #ccc;
+            border-spacing: 12px;
+            box-sizing: border-box;/*默认高度和宽度只是内容的范围*/
+            }
+        </style>
+15.15 背景属性
+        <style>
+            div{
+                background-clip:padding-box;/*默认是border-box*/
+                background-origin:content-box; /*默认是padding-box*/
+                background-size:70% auto;/*auto表示保持默认，cover表示覆盖全部 contain当图片大于框架时，缩小到框架*/
+                background-attachment:scroll;/*, fixed and inherit*/
+                /*background-break能够控制背景图像在不同区域显示*/
+                background-break:bounding-box;/* each-box每个部分单独考虑;continuous默认值，bounding-box将两部分之间的值加入考虑*/
+                background-image:url(bj4.png),url(bj3.png),url(bj2.png),url(bj1.jpg);
+            }
+        </style>
+15.16 边框属性
+        <style>
+            div{
+                border-top-left-radius:40px;
+                /*100是边框向内偏移的值，后面四个数是四条边框宽度*/
+                -webkit-border-image:url(1.jpg) 100/25px 50px 75px 100px;
+                /*边框默认是拉伸,上下平铺，左右拉伸，round先平铺，不够一副就拉伸*/
+                -webkit-border-image:url(3.jpg) 100/100px repeat stretch;
+            }
+        </style>
+15.17 变形功能
+        <style>
+            div:hover{
+                transform-origin: top right;/*中心点九个选项*/
+                -webkit-transform:rotate(45deg);
+                -webkit-transform:scale(0.5,2) ;/*x和y方向,或者scalex()*/
+                -webkit-transform:skewy(30deg);/*倾斜功能*/
+                -webkit-transform:translate(30px,30px);/*移动*/
+                -webkit-transform:rotate(45deg) scale(0.5,2) skewy(30deg) translate(30px,30px);
+            }
+        </style>
+15.17 动画功能
+        <style>
+            .transition{
+                width:200px;height:200px;
+                background:green;
+                /*transition:all 1s linear 0s;*/
+                /*四个属性：属性名称 变换时间(ease慢变快 ease-in开头慢 ease-out ease-in-out) 速度曲线 延迟*/
+                transition:background-color 1s linear 0s,width 2s ease 0.5s;/*多个属性*/
+            }
+            .transition:hover{
+                background-color:#f60;
+                width:400px;
+            }
+
+            .animations{
+                width:25px;height:200px;
+                background-color:#ff6600;
+                margin:auto auto;
+            }
+            @-webkit-keyframes mycolor{
+                0%{
+                    background-color:forestgreen;
+                }
+                20%{
+                    background-color: #8b1b2e
+                    width:50px;
+                    transform:rotate(10deg) translate(40px,0px);
+                }
+                40%{
+                    background-color: #8b2083;
+                    width:75px;
+                    transform:rotate(30deg) translate(0px,40px);
+                }
+                60%{
+                    background-color: #083a8b;
+                    width:100px;
+                    transform:rotate(90deg) translate(-40px,0);
+                }
+                80%{
+                    background-color: #8b7a85;
+                    width:150px;
+                    transform:rotate(50deg) translate(0px,-40px);
+                }
+                100%{
+                    background-color:#f60;
+                    width:200px;
+                    transform:rotate(0deg) translate(20px,20px);
+                }
+            }
+            .animations:hover{
+
+                -webkit-animation-name: mycolor;
+                -webkit-animation-duration: 5s;
+                -webkit-animation-timing-function:linear;
+                -webkit-animation-iteration-count: 1;/*也可写数字，表示循环次数*/
+            }
+        </style>
+15.18 多栏布局
+        <style>
+            .div4{
+                width:100%;
+                /*-webkit-column-count:3;*/
+                -webkit-column-width: 150px;/*栏的宽度*/
+                -webkit-column-gap: 50px;/*栏与栏之间的距离*/
+                -webkit-column-rule: dashed 3px red;/*分割线，和边框定义方式一样*/
+            }
+        </style>
+15.19 盒布局
+        <style>
+            .centerbody{ /*里边的div高度一致*/
+                width:1000px;
+                margin:0 auto;
+                display:-moz-box;
+                display:-webkit-box;
+            }
+        </style>
+15.20 弹性盒布局
+        <style>
+            .centerbody{
+
+                margin:0 auto;
+                display:-moz-box;
+                display:-webkit-box;
+                /*-webkit-box-orient:vertical;/!*子元素排列方向*!/*/
+            }
+            .left{
+                /*width:300px;*/
+                /*float:left;*/
+                background-color:red;
+                -webkit-box-ordinal-group: 1;
+                -webkit-box-flex: 1;
+            }
+            .right{
+                /*width:300px;*/
+                /*float:right;*/
+                background-color:green;
+                -webkit-box-ordinal-group: 1;
+                -webkit-box-flex: 1;
+            }
+            .center{
+                /*float:left;*/
+                /*width:400px;*/
+                background-color:blue;
+                -webkit-box-ordinal-group: 1;/*盒显示顺序*/
+                -webkit-box-flex: 1;/*弹性盒布局，会自动根据窗口调整盒大小*/
+            }
+        </style>
+15.21 Media Queries与自适应布局
+        <style>
+            @media screen and (min-width:640px) and (max-width:999px) {
+                .centerbody {
+                    width: 640px;
+                    margin: auto;
+                }
+            }
+        </style>
+16 IE兼容性
+        <!--[if lt ie 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+        <script src="js/selectivizr.js"></script>
+        <![endif]-->
+17 js异步
+        <script type="text/javascript">
+            function ajaxFunction(request,id){
+                var xmlHTTP;
+                try{
+                    xmlHTTP=new XMLHttpRequest();
+                }catch(e){
+                    try{
+                        xmlHTTP=new ActiveXObject('Msxml2.XMLHTTP')
+                    }catch(e){
+                        try{
+                            xmlHTTP=new ActiveXObject('Microsoft.XMLHTTP')
+                        }catch(e){
+                            alert('您的浏览器不支持ajax');
+                            return false;
+                        }
+                    }
+                }
+                if(xmlHTTP){
+                    xmlHTTP.open('GET',request,true);
+                    xmlHTTP.onreadystatechange=function(){
+                        if(xmlHTTP.readyState==4){
+                            if(xmlHTTP.status==200){
+                                document.getElementById(id).innerHTML=xmlHTTP.responseText;
+                            }
+                        }
+                    };
+                    xmlHTTP.send(null);
+                }else{
+                    alert('error')
+                }
+            }
+        </script>
+18 js轮播图
+        <script type="text/javascript" src="js/scripts.js"></script>
+        <!--轮播图开始-->
+        <div class="wrap">
+            <div id="slide-holder">
+                <div id="slide-runner">
+                    <a href="/"><img id="slide-img-1" src="images/a1.jpg" class="slide" alt="" /></a>
+                    <a href="/"><img id="slide-img-2" src="images/a2.jpg" class="slide" alt="" /></a>
+                    <a href="/"><img id="slide-img-3" src="images/a3.jpg" class="slide" alt="" /></a>
+                    <a href="/"><img id="slide-img-4" src="images/a4.jpg" class="slide" alt="" /></a>
+                    <a href="/"><img id="slide-img-5" src="images/a5.jpg" class="slide" alt="" /></a>
+                    <a href="/"><img id="slide-img-6" src="images/a6.jpg" class="slide" alt="" /></a>
+                    <a href="/"><img id="slide-img-7" src="images/a4.jpg" class="slide" alt="" /></a>
+                    <div id="slide-controls">
+                        <p id="slide-client" class="text"><strong>联盟推荐：</strong><span></span></p>
+                        <p id="slide-desc" class="text"></p>
+                        <p id="slide-nav"></p>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                if(!window.slider)
+                    var slider={};
+                slider.data=[
+                    {"id":"slide-img-1","client":"第一条的标题在这里","desc":"第一条的这里是描述信息"},
+                    {"id":"slide-img-2","client":"标题在这里","desc":"这里是描述信息"},
+                    {"id":"slide-img-3","client":"??????????","desc":"?????????????"},
+                    {"id":"slide-img-4","client":"??????????","desc":"?????????????"},
+                    {"id":"slide-img-5","client":"??????????","desc":"?????????????"},
+                    {"id":"slide-img-6","client":"??????????","desc":"?????????????"},
+                    {"id":"slide-img-7","client":"??????????","desc":"?????????????"}];
+            </script>
+        </div>
+        <!--轮播图结束-->
+        <style>
+            /*轮播图开始*/
+            div.wrap a{
+                color:#fff;
+            }
+            div#slide-holder {
+                width : 628px;
+                height : 278px;
+            }
+            div#slide-runner {
+                width : 628px;
+                height : 278px;
+                overflow : hidden;
+                position : absolute;
+            }
+            div#slide-holder img {
+                margin : 0;
+                display : none;
+                position : absolute;
+            }
+            div#slide-controls {
+                left : 0;
+                bottom : 0px;
+                width : 628px;
+                height : 46px;
+                display : none;
+                position : absolute;
+            }
+            div#slide-controls p.text {
+                float : left;
+                color : #fff;
+                display : inline;
+                font-size : 10px;
+                line-height : 16px;
+                margin : 15px 0 0 20px;
+                text-transform : uppercase;
+            }
+            p#slide-nav {
+                float : right;
+                height : 24px;
+                display : inline;
+                margin : 11px 15px 0 0;
+            }
+            p#slide-nav a {
+                float : left;
+                width : 24px;
+                height : 24px;
+                display : inline;
+                font-size : 11px;
+                margin : 0 5px 0 0;
+                line-height : 24px;
+                font-weight : bold;
+                text-align : center;
+                text-decoration : none;
+                background-position : 0 0;
+                background-repeat : no-repeat;
+            }
+            p#slide-nav a.on {
+                background-position : 0 -24px;
+            }
+            p#slide-nav a {
+                background-image : url(../images/silde-nav.png);
+            }
+            /*轮播图结束*/
+        </style>
+
+
+
+

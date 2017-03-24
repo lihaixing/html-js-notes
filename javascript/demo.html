@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+1 不支持javascript
+    <noscript>
+        您的浏览器不支持javascript，请更换查看！
+    </noscript>
+2 转义符:可以在字符前面加反斜杠\进行转义
+    <script>
+        var str5='king\'s';// \'单引号
+        var str6="king\"s";// \''双引号
+        var str7='ab\ncd';// \n 回车换行
+        var str8='ab\rcd';// \r 换行
+        var str9='ab\tcd';// \t 水平制表符
+        var str10='a\nb\rc\td"e\\f';// \\反斜线本身
+        alert(str10);
+    </script>
+3 运算符
+    <script>
+    //三元运算符 exp1?exp2:exp3;相当于if语句
+        res=3>1?'true':'false';
+    //逗号运算符
+        var d=(a= 1,b= 2,c=3);//d为3
+    //void运算符 表示表达式没有返回值
+        var d=void(a= 1,b= 2,c=3);//d为undefined
+    </script>
+4 条件语句
+    <script>
+    //一句代码:
+        if(3>11)
+            document.write('真');//如果真，执行一句代码，如果假不执行
+    //switch case语句和if...elseif...语句相似,但比if语句效率高
+        var a2='1';
+    //看switch中的表达式与哪个case相符，都不相符就执行default，比对是三个等号的严格比对
+        switch (a2){
+            case 0:
+                document.write('a2>1');
+                break;
+            case 2:
+                document.write('a2>2');
+                break;
+            case 1:
+                document.write('a2<3');
+                break;
+            default:
+                document.write('a2<=3');
+                break;
+        }
+        switch (a2){
+            case '1':
+                document.write('a2>1');//没有break，将不再与以下case匹配，直接全写
+            case 2:
+                document.write('a2>2');
+            case 1:
+                document.write('a2<3');
+                break;
+            default:
+                document.write('a2<=3');
+        }
+    </script>
+5 循环语句
+    <script>
+        //死循环需要用break来结束
+        for(var a1= 0,a2=0;a1>=0;a1++){
+            a2+=a1;
+            if(a1>=100){
+                document.write(a2);
+                break;
+            }
+        }
+        //continue用来结束本次循环进入下次循环
+        for(var a1= 0;a1<=10;a1++){
+            if(a1==3){
+                //break;
+                continue;
+            }
+            document.write(a1)
+        }
+        //while循环和do while循环
+        /*while(exp){
+         循环体;
+         } 先判断表达式是否为真，为真就执行一次循环体;
+         然后再判断表达式为真,为真则继续循环，直到表达式为假，则停止*/
+
+        /*do{
+         循环体;
+         }while(exp);
+         先无条件执行一次循环体，再判断表达式是否为真，为真则继续循环，为假就停止*/
+
+        //输出1~10的数字 break continue也可用在while 和 do while语句中
+        var a1=1;
+        while(a1<=10){
+            document.write(a1+'<br/>');
+            a1++;
+        }
+        do{
+            document.write('hello maiziedu');
+        }while(false)
+    </script>
+6 函数 输入参数个数不定
+    <script>
+        //假如参数数量不定
+        function calc2(){
+            paramsNum=arguments.length;//得到arguments的长度，也就是数量
+            sum=0;
+            for(i=0;i<paramsNum;++i){
+                sum+=arguments[i];//i必须从0开始，否则NaN
+            }
+            return sum;
+        }
+        alert(calc2(2,3,4));
+    </script>
+7 对象操作
+    <script>
+
+        alert(obj5 instanceof Test1);//instanceof来确定是否由构造器函数创建true/false
+    //通过delete删除指定属性
+        delete obj.name;
+    //构造函数的原型
+        obj=new Foo();
+        obj.x=1;
+        obj.y=2;
+        Foo.prototype.z=3;//构造函数对象的原型是 函数.prototype
+        Object.prototype.w=5;//函数.prototype的原型是Object.prototype
+        console.log(obj);//Foo {name: 6, age: 9, x: 1, y: 2}
+        console.log(obj.z);//3
+        console.log(obj.w);//5
+    //对象的原型
+        var obj2=Object.create({x:1,y:2});//意思是创建了obj2的原型对象，但不是Object.prototype
+        console.log(obj2.__proto__);//{x:1,y:2}
+    //检测某属性是否属于某个对象
+        function hs(){};
+        obj2=new hs();
+        obj2.y=4;
+        obj2.z=5;
+        hs.prototype.w=7;
+        //通过in检测某属性是否属于某个对象
+        console.log('w' in obj2);//true
+        console.log('toString' in obj2);//true
+        //通过hasOwnProperty检测对象是否有自己的属性
+        console.log(obj2.hasOwnProperty('y'));//true
+        console.log(obj2.hasOwnProperty('w'));//false不是自己的
+        console.log(obj2.hasOwnProperty('toString'));//false
+        //遍历
+        function foo(){}
+        obj=new foo();
+        obj.x=1; obj.y=2; foo.prototype.z=3;
+        for(var p in obj){
+            console.log(p);//x,y,z可以从原型上继承
+        }
+        console.log(Object.keys(obj));//["x", "y"]
+        console.log(obj.propertyIsEnumerable('z'));//false必须属性是自己的，并且可枚举的
+        console.log(Object.getOwnPropertyNames(obj1));
+    //对象属性的特性
+        //[[writable]]表示能否修改属性的值。默认值为true
+        //value
+        /*[[Enumerable]]表示能否通过for in循环返回属性。代表属性是否可以枚举。能否访问
+         直接在对象上定义的属性默认值为true*/
+        /*[[configurable]]表示是否能通过delete删除属性从而重新定义属性，能否修改属性的特性，
+         或者能否把属性修改为访问器属性。直接在对象上定义的属性，他们的默认值为true*/
+        //属性的四个特性默认都是true，
+        //通过Object.defineProperty(object,'属性名',属性描述)给属性赋值，默认不能修改、枚举、配置(删除）
+        //如果配置项为不可配置，但可以将writable的true改为false，不能讲false改为true
+        Object.defineProperty(obj,'y',{
+            value:56,
+            writable:true,//能写能修改
+            enumerable:false,//改成true后，看结果
+            configurable:false
+        })
+        console.log(obj.y);//56
+        obj.y=777;
+        console.log(obj.y);//777说明可修改
+        for(var p in obj){
+            console.log(p);//没有，说明不可枚举,/还能列出原型的
+        }
+        console.log(obj.propertyIsEnumerable('y'));//false
+        console.log(Object.keys(obj));//[]
+        console.log(obj.hasOwnProperty('y'));//true
+        console.log(Object.getOwnPropertyNames(obj));//["x", "y"]
+
+        Object.defineProperty(obj,'l',{
+            get :function(){
+                return 123
+            }
+        });
+        console.log(obj.l);//123
+    //存储器属性
+        var person={
+            username:'king',
+            sex:'男',
+            get age(){ //得到属性的值
+                return 12;
+            },
+            set age(val){ //设置属性的值
+                console.log('不能设置'+val);
+            }
+        };
+        console.log(person.username);//king
+        console.log(person.age);//12
+        person.age=13;//不能设置13
+
+        var obj={
+            x:1,
+            y:2,
+            z:3,
+            get zhouchang(){
+                return this.x+this.y+this.z;
+            },
+            set fbzc(val){
+                this.x*=val;
+                this.y*=val;
+                this.z*=val;
+            }
+        };
+        console.log(obj.zhouchang);
+        obj.fbzc=3;//设置几，val就是几
+        console.log(obj.zhouchang);
+    //定义多个属性的特性
+        var person={};
+        Object.defineProperties(person,{
+            username:{
+                value:'king',
+                writable:true,
+                enumerable:true,
+                configurable:true
+            },
+            age:{
+                value:12,
+                writable:false
+            }
+        });
+        alert(typeof person['username']);//string
+        console.log(person.username);
+        console.log(person.age);
+        console.log(Object.getOwnPropertyDescriptor(person,'username'));//得到对象属性的特性
+        //Object {value: "king", writable: true, enumerable: true, configurable: true}
+    //对象的原型属性
+        var obj={x:1};
+        var obj1=Object.create(obj);//obj1是obj的原型或者根据obj创建了obj1对象
+        console.log(obj.isPrototypeOf(obj1));//true
+        console.log(Object.prototype.isPrototypeOf(obj));//true
+        console.log(Object.prototype.isPrototypeOf(obj1));//true
+    //toString
+        var d=new Date();
+        console.log(Object.prototype.toString.call(d));//[object Date]
+        console.log(d.toString());//Sat Jan 16 2016 13:00:05 GMT+0800 (中国标准时间)
+        console.log(typeof d);//object
+    //对比typeof classof Object.prototype.toString.call
+        var x=true;
+        console.log(classof(x));//boolean
+        var x={};
+        console.log(classof(x));//Object
+        var x=[];
+        console.log(classof(x));//Array
+        var x=window;
+
+
+    </script>
+8 Date对象
+    <script>
+        //设置日期，显示日期
+        var d=new Date();
+        console.log(d);//Sat Jan 16 2016 18:15:04 GMT+0800 (中国标准时间)
+        d=new Date(134567889);
+        console.log(d);//Fri Jan 02 1970 21:22:47 GMT+0800 (中国标准时间)
+        d=new Date(2015,10,3);//Date.parse()方法识别
+        console.log(d);//Tue Nov 03 2015 00:00:00 GMT+0800 (中国标准时间)
+
+        //解析字符串，得到毫秒数
+        console.log(Date.now());//返回从1970.1.1到现在经过的毫秒数
+        console.log(new Date(1453078006122));//Mon Jan 18 2016 08:46:46 GMT+0800 (中国标准时间)
+        console.log(Date.parse('Mon Jan 18 2016 08:46:46 GMT+0800'));//1453078006000
+        console.log(Date.parse('Aug 9,2015'));//1439049600000
+        console.log(Date.UTC(2015,9,5,5,2,3,4));//1444021323004
+
+        //得到日期的具体年月日时分秒毫
+        d=new Date('Jan 18 2016 08:46:46 GMT+0800');
+        console.log(d.getDate());//18一个月中的第几天
+        console.log(d.getDay());//1一个星期中的第几天0代表星期日
+        console.log(d.getFullYear());//2016
+        console.log(d.getMonth());//0 0~11
+        console.log(d.getHours());//8
+        console.log(d.getMinutes());//46
+        console.log(d.getSeconds());//46
+        console.log(d.getMilliseconds());//0
+        console.log(d.getTime());//1453078006000
+
+        //设置日期的具体年月日时分秒毫
+        d.setDate(11);
+        console.log(d);//Mon Jan 11 2016 08:46:46 GMT+0800 (中国标准时间)
+        d.setFullYear(2015);
+        console.log(d);//Sun Jan 11 2015 08:46:46 GMT+0800 (中国标准时间)
+        d.setMonth(5);
+        console.log(d);//Thu Jun 11 2015 08:46:46 GMT+0800 (中国标准时间)
+        d.setHours('23');
+        console.log(d);//Thu Jun 11 2015 23:46:46 GMT+0800 (中国标准时间)
+        d.setMinutes(23);
+        console.log(d);
+        d.setSeconds(25);
+        console.log(d);
+        d.setMilliseconds(646);
+        console.log(d);
+        d.setTime(54654564646);
+        console.log(d);//Sat Sep 25 1971 21:49:24 GMT+0800 (中国标准时间)
+
+        //将日期转成字符串
+        console.log(d.toString());//Sat Sep 25 1971 21:49:24 GMT+0800 (中国标准时间)
+        console.log(Date.parse('Sat Sep 25 1971 21:49:24 GMT+0800'));//54654564000
+        console.log(d.valueOf());//54654564646返回一个日期对象的原始值
+        console.log(d.toJSON());//1971-09-25T13:49:24.646Z
+    </script>
+8 正则表达式
+    <script>
+    //两种写法
+        var patt=new RegExp('javascript');
+        var patt=/javascript/i;//不区分大小写，或者patt=new RegExp('javascript',i)
+        var patt=new RegExp('javascript','i');
+
+    //test检测字符 返回布尔类型
+        var res=patt.test('this is JavaScript file');
+
+        //方括号用于查找某个范围内的字符
+        //[abc]查找方括号之间的任何字符
+        var a=new RegExp('[abc]');//a=/[abc]/;
+        console.log(a.test('this is aside'));//true
+        //[^abc]查找abc以外的任意字符
+        console.log(/[^abc]/.test('this not good'));//true
+        console.log(/[^abc]/.test('a'));//false
+        console.log(/[0-9]/.test('this is 1 boy'));//true
+        console.log(/[a-z]/.test('12434'));//false
+        console.log(/javascript|php|ios/i.test('this is PHP file'));//false,加上i就是true
+        //元字符
+        console.log(/./.test('\n'));//false .表示查找除换行符的全部字符
+        console.log(/./.test('this is'));//true
+        console.log(/\w/.test('!@#$'));//false \w表示查找所有字符a-z A-Z 0-9
+        console.log(/\W/.test('!@#$'));//true \W表示查找所有非字符
+        console.log(/\s/.test('hello maizi'));//true \s表示查找空格
+        console.log(/\S/.test(''));//false \S表示查找非空格
+        console.log(/g\b/.test('good'));//false \b表示边界，此语句表示查找g后面边界
+        console.log(/d\b/.test('good'));//true
+        console.log(/d\B/.test('good'));//false \B表示非边界
+        console.log(/\d/.test('sdf'));//查找数字
+        console.log(/\D/.test('sdf'));//查找非数字
+
+        console.log(/\0/.test('NUL'));//查找NUL字符
+        console.log(/\n/.test('hell\nb'));//查找换行符
+        console.log(/\f/.test('sdfs\fd'));//查找换页符
+        console.log(/\r/.test('sdfs\rd/'));//查找回车符
+        console.log(/\t/.test('sdfs\td'));//查找制表符
+        console.log(/\v/.test('sdfs\vd'));//查找垂直制表符
+        console.log(/\xxx/.test('sdfs\vd'));//查找以八进制xxx规定的字符
+        console.log(/\xdd/.test('sdfs\vd'));//查找十进制数dd规定的字符
+        console.log(/\uxxxx/.test('sdfs\vd'));//查找以十六进制xxxx规定的Unicode字符
+
+        //量词
+        console.log(/o+/.test('google'));//匹配至少包含一个o的字符串
+        console.log(/o*/.test('godo'));//零次一次或多次
+        console.log(/o?/.test('godo'));//匹配任何零次或一次的字符串
+        console.log(/o{2}/.test('godo'));//包含2个o的序列的字符串false
+        console.log(/o{2}/.test('good'));//true
+        console.log(/o{2,4}/.test('gooodouo'));//两次或者4个o的序列
+        console.log(/o$/.test('hello'));//结尾为o的字符串
+        console.log(/^o/.test('open'));//开头为o
+        console.log(/o(?=w)/.test('helloworld'));//o后面紧接w
+        console.log(/o(?!w)/.test('helloworld'));//o后面非w
+    // exec 在目标在执行一次正则匹配操作，返回数组
+        var a='this is a is word'
+        console.log(/is/g.exec(a));
+        //["is", index: 2, input: "this is a world"]
+        console.log(/is/g.exec(a)[0]);//is 注意
+
+        /*如果regExpObject带有全局标志g，test()函数不是从字符串的开头开始查找，
+         而是从属性regExpObject.lastIndex所指定的索引处开始查找该属性值默认为0，
+         所以第一次仍然是从字符串的开头查找。当找到一个匹配时，
+         test()函数会将regExpObject.lastIndex的值改为字符串中本次匹配内容的最后一个字符的下一个索引位置。
+         当再次执行test()函数时，将会从该索引位置处开始查找，从而找到下一个匹配。*/
+        var str='this is a test hello maizi hello world';
+        var patt=/i/ig;
+        var myArr;
+        while((myArr=patt.exec(str))!==null){
+            var msg='找到了'+myArr[0]+'!';
+            msg+='下一个匹配从'+patt.lastIndex;
+            console.log(msg);
+        }
+
+        var str1='what are you doing OK?';
+        var patt1=/o/ig;
+        var myArr1;
+        while((myArr1=patt1.exec(str1))!==null){
+            var msg1=myArr1[0];
+            msg1+=patt1.lastIndex;
+            console.log(msg1);
+
+        }
+    //支持正则表达式的string对象方法
+        var str='this is a test';
+        res=str.match(/iS/i);
+        console.log(res);//["is", index: 2, input: "this is a test"]
+        res=str.match(/IS/ig);
+        console.log(res);//["is", "is"]
+        res=str.search(/IS/i);
+        console.log(res);//2表示首个匹配位置，加上g也一样
+        var str1=str.replace(/is/ig,'!')
+        console.log(str1);//th! ! a test
+
+    /*$1,$2,$3和正则表达式无关，这个代码应该是放在服务器上运行的，
+         相当于一个变量。执行完之后，$1,$2,$3就被赋予实际的值了。这里起个站位的作用。*/
+        var str2='2015-09-27';
+        //res=str2.replace(/(\d{4})-(\d{2})-(\d{2})/,'09/27/2015');//09/27/2015
+        res=str2.replace(/(\d{4})-(\d{2})-(\d{2})/,'$2/$3/$1');//09/27/2015
+        console.log(res);
+
+        var str3='Hello Maizi Edu';
+        var res3=str3.replace(/[A-Z]/g,func);
+        function func(match){
+            return 'king_'+match.toLowerCase();
+        }
+
+        console.log(res3);//king_hello king_maizi king_edu
+
+        res4=str3.split(/\s+/);
+        console.log(res4);//["Hello", "Maizi", "Edu"]
+    </script>R
+9 错误对象
+    <script type="">
+        /* URIError
+         创建一个error实例，表示错误的原因：给 encodeURI()或  decodeURl()传递的参数无效
+         TypeError
+         创建一个error实例，表示错误的原因：变量或参数不属于有效类型
+         SyntaxError
+         创建一个error实例，表示错误的原因：eval()在解析代码的过程中发生的语法错误
+         ReferenceError
+         创建一个error实例，表示错误的原因：无效引用
+         RangeError
+         创建一个error实例，表示错误的原因：数值变量或参数超出其有效范围。
+         InternalError
+         创建一个代表Javascript引擎内部错误的异常抛出的实例. 如: "递归太多".
+         EvalError
+         创建一个error实例，表示错误的原因：与 eval() 有关  */
+        try{
+            notExist();
+        }catch(e){
+            alert(e.name+':'+ e.message)
+        }
+
+        try{
+            var a:2;
+        }catch(e) {
+            if (e instanceof EvalError) {
+                alert('Eval错误:' + e.message)
+            } else if (e instanceof RangeError) {
+                alert('Range错误:' + e.message)
+            } else if (e instanceof ReferenceError) {
+                alert('Reference错误:' + e.message)
+            } else if (e instanceof SyntaxError) {
+                alert('Syntax错误:' + e.message)
+            } else if (e instanceof URIError) {
+                alert('URI错误:' + e.message)
+            } else if (e instanceof TypeError) {
+                alert('Type错误:' + e.message)
+            }else{
+                alert('其它错误')
+            }
+        }
+
+         function MyError(msg){
+         this.name='这是我自定义的错误名字';
+         this.message=msg||'默认的自定义的错误信息';
+         }
+         MyError.prototype=Object.create(Error.prototype);
+         MyError.prototype.constructor=MyError;
+         try{
+         throw new MyError();//z这相当于定义了一个异常，就是e
+         }catch(e){
+         console.log(e.name+':'+e.message);
+         }
+
+         try{
+         throw new MyError('测试自定义的错误信息')
+         }catch(e){
+         console.log(e.name+':'+e.message)
+         }
+
+        //传递对象
+        var o1={x:1}
+        var o2={x:1}
+        console.log(o1==o2);//false
+        var o3={x:1}
+        var o4={x:1}
+        var o4=o3;
+        console.log(o4===o3);//true
+        o4.x=123;
+        console.log(o4===o3);//true
+        console.log(o3.x);//123
+
+        function f(o){
+            o.x=55;
+        }
+        f(o3);
+        console.log(o4.x);//55
+        console.log(o4===o3);//true
+    </script>
+10 数组
+    <script>
+
+        //通过构造函数Array()创建数组
+        var a=new Array();//相当于空数组[]
+        var a=new Array(5);//数组的长度为5
+        console.log(a.length);//[] 但长度是5
+        var a=new Array(1,2,'king',false,2.3,null);//相当于元素
+        console.log(a);//[1, 2, "king", false, 2.3, null]
+
+        var arr=[];
+        arr[0]='a';
+        arr[1]='b';
+        arr[-5]='c';
+        arr[2.3]='d';
+        arr[null]='e';
+        arr[false]='f';
+        arr[undefined]='g';
+        arr['name']='h';
+        console.log(arr);//["a", "b", -5: "c", 2.3: "d", null: "e", false: "f", undefined: "g"…]
+        console.log(arr.length);//2 必须非负整数
+
+        var arr=[];
+        arr[100]='abc';
+        console.log(arr.length);//101
+
+        var arr=[1,2,3,4,5,6];
+        arr.length=3;
+        console.log(arr);//[1, 2, 3]
+        arr.length=5;
+        console.log(arr);//[1, 2, 3]
+        console.log(arr.length);//5
+
+        var arr=[1,2,3];
+        Object.defineProperty(arr,'length',{
+            writable:false
+        });
+        console.log(arr.length);
+        arr.length=5;
+        console.log(arr.length);//3
+
+        var arr=['a','b'];
+        arr.push('c');//给数组末尾添加值
+        arr.push('d','e','f',12,34);
+        console.log(arr);//["a", "b", "c", "d", "e", "f", 12, 34]
+        console.log(arr.length);//8
+
+        res=arr.pop();//弹出数组末尾的值(相当于删除)
+        console.log(res);//34
+        console.log(arr);//["a", "b", "c", "d", "e", "f", 12]
+
+        arr.unshift(1,2,3,4,5);//在数组首部添加值
+        console.log(arr);//[1, 2, 3, 4, 5, "a", "b", "c", "d", "e", "f", 12]
+        res=arr.shift();//弹出(删除)首部值
+        console.log(res);//1
+        console.log(arr);//[2, 3, 4, 5, "a", "b", "c", "d", "e", "f", 12]
+
+        var arr=['a','b','c','d'];
+        delete arr[0];
+        console.log(arr);//[1: "b", 2: "c", 3: "d"]
+        console.log(arr.length);//4没变
+
+        //for in遍历数组
+        for(var i in arr1){
+            console.log(arr1[i]);//可以，也会遍历继承下来的
+        }
+        for(var i in arr1){
+            if(arr1.hasOwnProperty(i))
+                console.log(arr1[i]);//可以，遍历可枚举的
+        }
+
+        //forEach遍历数组
+        var arr2=[1,2,3,4,5,6];
+        arr2.forEach(function(x){
+            console.log(x);//每个属性都会经过函数
+        })
+
+        function Test(element,index,array){
+            console.log('要处理的数组:'+array);
+            console.log('索引:'+index+'--值为:'+element)
+        }
+        arr2.forEach(Test);
+
+        //数组中的常用方法
+        var arr=['a','b','c','d'];
+        var res=arr.join();//数组中的值用分隔符连接起来，默认是逗号
+        console.log(res);//a,b,c,d
+        var res=arr.join('-');
+        console.log(res);//a-b-c-d
+        res=arr.reverse();//反转数组
+        console.log(res);//["d", "c", "b", "a"]
+        var arr=['a','b','c','A','B','C'];
+        arr.sort();//对数组排序,默认以字符串Unicode排序
+        console.log(arr);//["A", "B", "C", "a", "b", "c"]
+        var arr=['a','b','c','A','B','C',1,2,11,22]
+        arr.sort();
+        console.log(arr);//[1, 11, 2, 22, "A", "B", "C", "a", "b", "c"]
+
+        var arr=[1,11,2,22]
+        arr.sort(function(a,b){
+            return a-b;//从小到大  注意
+        })
+        console.log(arr);//[1, 2, 11, 22]
+        arr.sort(function(a,b){
+            return b-a;//从大到小
+        })
+        console.log(arr);//[22, 11, 2, 1]
+
+        var users=[
+            {name:'king',age:12},
+            {name:'queen',age:32},
+            {name:'zhangsan',age:54},
+            {name:'rose',age:66},
+        ]
+        users.sort(function(a,b){
+            if(a.name>b.name){return 1;}
+            if(a.name<b.name){return -1;}
+            return 0;
+        });
+        console.log(users);
+        for(var i in users){
+            console.log(users[i]);
+        }
+
+        var arr=[1,2,3];
+        //            res=arr.concat(4,5,6);//连接新元素[1, 2, 3, 4, 5, 6]
+        //            res=arr.concat([4,5,6]);//与以上意思一样
+        //            res=arr.concat([4,5,6],[7,8,9]);//[1, 2, 3, 4, 5, 6, 7, 8, 9]
+        //            res=arr.concat([11,[12,[13]]]);//长度是5 [1, 2, 3, 11, Array[2]]
+        console.log(res);
+
+        var arr=[1,2,3,4,5,6,7,8,9];
+        //如果第一个数是负数，就是倒数第几个，不包含第0个，如果第二个是负数，则包含第0个
+        res=arr.slice(0,3);//截取部分元素，从0开始，截取3个
+        console.log(res);//[1, 2, 3]
+        console.log(arr);//[1, 2, 3, 4, 5, 6, 7, 8, 9]
+        res1=arr.slice(2,-3);//-3是倒数第三
+        console.log(res1);//[3, 4, 5, 6]
+        res2=arr.slice(4);//从第4个开始截取
+        console.log(res2);//[5, 6, 7, 8, 9]
+        res3=arr.slice(-5,-3);//从倒数第五个开始，到-3
+        console.log(res3);//[5, 6]
+
+        var arr=[1,2,3,4,5,6,7,8,9];
+        res=arr.splice(0,1);//截取掉，从0开始截取1个
+        console.log(res);//[1]
+        console.log(arr);//[2, 3, 4, 5, 6, 7, 8, 9]
+        res1=arr.splice(5);
+        console.log(res1);//[7, 8, 9]
+        console.log(arr);//[2, 3, 4, 5, 6]
+        res2=arr.splice(1,2,'#','&','%','^');//不能写负数，截取完，在相同位置上添加元素
+        console.log(res2);//[3, 4]
+        console.log(arr);//[2, "#", "&", "%", "^", 5, 6]
+
+        var arr=[1,2,3,4,5,6];
+        res=arr.map(function(x){
+            return x*x;
+        });
+        console.log(res);//[1, 4, 9, 16, 25, 36]
+
+        var arr=['a!','b!','c!','d!','e!']
+        res=arr.map(Trans);//回调，通过方式
+        function Trans(x){
+            return x.replace(/!/g,'?').toUpperCase();
+        }
+        console.log(res);//["A?", "B?", "C?", "D?", "E?"]
+
+        //过滤数组
+        var arr=[1,3,4,5,5,623,4,345,4367,false,true,NaN,null,undefined,' ',''];
+        res=arr.filter(function(x){
+            return x<=10;
+        })
+        console.log(res);//新数组[1, 3, 4, 5, 5, 4, false, true, null, " ", ""]
+        //
+        res1=arr.filter(function(x){
+            return x%2===0&x!=undefined&x!=null;
+        })
+        console.log(res1);//[4, 4, false, " ", ""]
+
+        //累加器
+        var arr=[1,2,3,4,5];
+        res=arr.reduce(function (a,b) { //reduce是从左到右，reduceRight从右到左
+            return a+b
+        },10)//10为初始值
+        console.log(res);//25
+        res=arr.reduce(function (a,b) {
+            return a-b
+        },10)
+        console.log(res);//-5
+        res=arr.reduceRight(function (a,b) {
+            return a/b
+        })
+        console.log(res);//0.20833333333333334
+
+        //检测每一个是否都满足
+        var age=[12,34,55,68,28,19];
+        res=age.every(function(x){
+            return x>=18
+        })
+        console.log(res);//false
+
+        //检测某些是否满足
+        res=age.some(function(x){
+            return x>19;
+        });
+        console.log(res);//true
+        //检测索引位置
+        var arr=['a','b','c','d','e','a','b','c'];
+        res=arr.indexOf('b');
+        console.log(res);//1 索引
+        res=arr.indexOf('A');
+        console.log(res);//-1
+        res=arr.indexOf('b',2);//第二个参数表示从索引2开始
+        console.log(res);//6
+        res=arr.lastIndexOf('a');//表示最后一次出现的位置
+        console.log(res);//5
+        res=arr.lastIndexOf('a',4);//4表示截止到索引4
+        console.log(res);//0
+
+        //检测是否是数组
+        res=[];res1={};
+        console.log(Array.isArray(res));//true
+        console.log(Array.isArray(res1));//false
+        res=[1,3,5,'a','b','c','5','7'];
+        console.log(res.toString());//相当于连接字符串1,3,5,a,b,c,5,7
+    </script>
+11 javascript中的事件简介
+    <script>
+        var btn6=document.getElementById('btn6');
+        var box1=document.getElementById('box1');
+        btn6.onclick=function(){
+            alert('btn6 clicked');
+            var e=e||window.event;
+            //e.stopPropagation();//w3c取消冒泡
+            if(typeof e.cancelBubble=='undefined'){
+                e.stopPropagation();
+            }else{
+                e.cancelBubble=true;//IE方法取消冒泡
+            }
+        }
+        box1.onclick=function(){
+            alert('div clicked')
+        }
+        document.body.onclick=function(){
+            alert('body clicked')
+        }
+        document.documentElement.onclick=function(){
+            alert('html clicked')
+        }
+        document.onclick=function(){
+            alert('document clicked')
+        };//冒泡
+
+        var btn5=document.getElementById('btn5');
+        btn5.onclick=function(e){
+            /*alert(e);//[Object MouseEvent]
+             alert(e.type);//click*/
+            var e=e || window.event;//兼容性问题Ie浏览器
+            alert(e)
+        }
+
+        var btn4=document.getElementById('btn4');
+        btn4.onclick=function(){
+            alert('b')
+        }
+        btn4.onclick=function(){
+            alert('c');//只显示c
+        }
+
+        var btn3=document.getElementById('btn3');
+        //            btn3.onclick=function(){
+        //                alert(this.tagName);//标签名字 INPUT
+        //            };
+        var count=0;
+        btn3.onclick=function(){
+            alert(count++);
+            if(count===3){
+                btn3.onclick=null;//没有这个单击事件了
+            }
+        }
+
+        var btn1=document.getElementById('btn1');
+        btn1.onclick=function(e){
+            alert('btn1 clicked');
+        };
+
+        function test2(){
+            alert('btn2 clicked');
+        }
+        var btn2=document.getElementById('btn2');
+        btn2.onclick=test2;
+    </script>
+12 绑定事件
+    <script>
+        var EventUtil= {
+            //检测绑定事件
+            addHandler: function (element, type, handler) {
+                if (element.addEventListener) { //写成！=undefined也行
+                    element.addEventListener(type, handler, false);
+                } else if (element.attachEvent) {
+                    element.attachEvent('on' + type, handler);
+                } else {
+                    element['on' + type] = handler;
+                }
+            },
+            removeHandler: function (Element, Type, Handler) {
+                if (Element.removeEventListener) {
+                    Element.removeEventListener(Type, Handler, false);
+                } else if (Element.detachEvent) {
+                    Element.detachEvent('on' + Type, Handler);
+                } else {
+                    Element['on' + Type] = null;
+                }
+            },
+
+            getEvent: function (e) {
+                return e ? e : window.event
+            },
+            getTarget: function (e) {
+                e = e || window.event;
+                return e.target || e.srcElement;
+            },
+            preventDefault: function (e) {
+                e = e || window.event;
+                if (e.preventDefault()) {
+                    e.preventDefault();
+                } else {
+                    return e.returnValue = false;
+                }
+            },
+            stopPropagation: function (e) {
+                e = e || window.event;
+                if (e.stopPropagation()) {
+                    e.stopPropagation();
+                } else {
+                    e.cancelBubble = true;
+                }
+            }
+        }
+        btn3.addEventListener('click',function(e){
+            alert(e.eventPhase);//2 检测事件流处于哪个阶段如果在捕获阶段1在事件目标阶段2在冒泡阶段是3
+        },false);
+
+        myBlob.onclick=EventUtil.preventDefault;//阻止默认行为
+
+        var btn2=document.getElementById('btn2');
+        btn2.onclick=test;
+        btn2.onmouseover=test;
+        btn2.onmouseout=test;
+        function test(e){
+            switch (e.type){
+                case 'click':
+                    alert('clicked');
+                    break;
+                case 'mouseover':
+                    e.target.style.backgroundColor='red';
+                    break;
+                case 'mouseout':
+                    e.target.style.backgroundColor='';
+                    break;
+            }
+        }
+
+        alert(e.tagName);//undefined
+        alert(this.tagName);//INPUT
+        alert(this);//[object HTMLInputElement]
+        alert(e);//[object MouseEvent]
+        alert(e.target==e.currentTarget==this==document.getElementById('xx'))
+        //true 注意IE中e为window.event e.target为window.event.srcElement
+
+    </script>
+13 表单验证
+    <form action="doAction.php" method="post" onsubmit="return check()">
+        用户名: <input type="text" name="username" id='username'/>用户名只能保护数字字母下划线<br/>
+        密码: <input type="password" name="password" id="password"/> 密码不能为空<br/>
+        邮箱: <input type="text" name="email" id="email"/> 请输入合法邮箱<br/>
+        <input type="submit" value="注册"/>
+    </form>
+    <script>
+        function check(){
+            var username=document.getElementById('username').value;
+            if(!/^[a-zA-Z0-9_]+$/.test(username)){
+                alert('用户名不合法');
+                return false;
+            }
+            var password=document.getElementById('password').value;
+            if(/^[\s\n\t\r]*$/.test(password)){
+                alert('密码不能为空');
+                return false;
+            }
+            var email=document.getElementById('email').value;
+            if(!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(email)){
+                alert('邮箱不合法');
+                return false;
+            }
+    //                表单验证案例网站 http://validform.rjboy.cn
+            return true;
+        }
+    </script>
+</body>
+</html>
