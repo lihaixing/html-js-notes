@@ -1,0 +1,33 @@
+window document.documentElement document.body
+
+jquery中
+$(p).offset(); //是个对象{top: 393, left: 0} 元素距离body顶部、左边的距离
+
+$(p).position();//获取元素相对于父元素的偏移 {top: 455, left: 0}
+
+$(p).scrollTop();
+$(p).scrollLeft();
+
+$(p).height();
+$(p).width();不包括padding
+$(p).innerWidth();不包括边框
+$(p).outerWidth();包括边框
+
+js中
+window.innerHeight
+document.documentElement.clientHeight 都表示可视窗口高度
+
+元素的
+element.offsetHeight 元素高度，包含border
+element.offsetWidth
+element.offsetTop 距父元素顶部的距离
+element.offsetLeft
+
+element.clientHeight 元素高度，不包括border
+element.clientHeightWidth 也不包括滚动条
+
+element.scrollHeight 元素高度，不包含border
+element.scrollWidth
+element.scrollLeft 滚进去了多少
+element.scrollTop
+
