@@ -85,3 +85,63 @@ context.shadowColor='rgba(0,0,0,0.5)';
 context.shadowOffsetX=5;
 context.shadowOffsetY=5;
 context.shadowBlur=4;
+
+// 渐变
+// 创建一个线性渐变
+var gradient=context.createLinearGradient(30,30,70,70);//起点x坐标 起点y坐标 终点x坐标 终点y坐标
+gradient.addColorStop(0,'white'); //0是开始的颜色 1是结束的颜色
+gradient.addColorStop(1,'black');
+// 运用渐变
+context.fillStyle=gradient;
+
+// 渐变应该和图形的坐标匹配才行，否则只能显示部分渐变
+context.fillRect(50,50,50,50);
+// 利用函数使得渐变和图形匹配
+function createRectLinearGradient(context,x,y,width,height){
+	return context.createLinearGradient(x,y,x+width,y+height);
+}
+//径向渐变 两个(55,55)是两个圆心，开始和结束，10和30是半径
+var gradient=context.createRadialGradient(55,55,10,55,55,30);
+
+// 模式 其实就是重复的图像 可用来填充或描边图形
+// 第一个参数还可以是video元素或canvas元素
+var img=document.images[0];
+var pattern=content.createPattern(image,'repeat');//第二个参数可以是repeat repeat-x repeat-y no-repeat
+context.fillStyle=pattern;
+// 和渐变一样重复都是从(0,0)开始的，不是从图形开始绘制
+
+// 使用图像数据
+// 取得原始图像数据 从左上角(10,5)大小为50*50像素区域的数据
+var imageData=context.getImageData(10,5,50,50);
+//imageData有三个属性：width/height/data
+//data是一个数据，保存着图像的每一个像素的数据
+//第一个像素保存在第0~3个元素中，分别代表红、绿、蓝、透明度，每个元素值都在0~255之间
+//实现灰度，只需将红绿蓝三个值的平均值赋给红绿蓝
+var data=imageData.data;//取得数据
+imageData.data=data2;//改变数据
+context.putImageData(imageData,0,0);//将图像数据绘制到画布上
+
+// 合成
+context.globalAlpha=0.5;//绘制图形的透明度 默认是0,绘制完成后恢复为0
+
+context.globalCompositeOperation='source-over';//表示后面绘制的图像与前面绘制的图像怎样结合
+//source-over 默认，后绘制的图像位于先绘制图形的上方
+//source-in 后绘制图形和先绘制图形重叠部分可见，其它部分透明
+//source-out 不重叠部分可见，先绘制的图像完全透明
+//source-atop 重叠部分可见，先绘制图形不受影响
+//destination-over 后绘制位于先绘制下方，只有之前透明像素下的部分才可见
+//destination-in 后绘制位于先绘制下方，两者不重叠部分完全透明
+//destination-out 后绘制的图像擦掉与先绘制重叠的部分
+//destination-atop 后绘制位于先绘制下方,两者不重叠的地方，先绘制的透明
+//lighter 后绘制与先绘制重叠部分的值相加，使该部分变亮
+//copy 后绘制的图像完全替代与之重叠的先绘制图像
+//xor 后绘制与先绘制重叠的部分执行‘异或’操作
+
+// 代码
+context.fillStyle="#ff0000";
+context.fillRect(10,10,50,50);
+context.globalCompositeOperation="destination-over";
+context.fillStyle='rgba(0,0,255,1)';
+context.fillRect(30,30,50,50);
+
+

@@ -15,8 +15,8 @@ if(drawing.getContext){
     //context.fillRect(30,30,50,50);
     //context.clearRect(40,40,10,10);
 
-    //context.lineWidth=5;//Ä¬ÈÏÊÇ1
-    //context.lineJoin='bevel';//roundÔ²½»£¬bevelĞ±½»£¬miterĞ±½Ó
+    //context.lineWidth=5;//é»˜è®¤æ˜¯1
+    //context.lineJoin='bevel';//roundåœ†äº¤ï¼Œbevelæ–œäº¤ï¼Œmiteræ–œæ¥
     //context.strokeStyle='#f00';
     //context.strokeRect(10,10,50,50);
     //context.strokeStyle='rgba(0,0,255,0.5)';
@@ -24,7 +24,7 @@ if(drawing.getContext){
 
     context.lineWidth=1;
     //context.lineJoin='round';
-    //context.lineCap='square';//buttÆ½Í·£¬roundÔ´Í·£¬square·½Í·
+    //context.lineCap='square';//buttå¹³å¤´ï¼Œroundæºå¤´ï¼Œsquareæ–¹å¤´
     context.beginPath();
     context.arc(100,100,95,0,2*Math.PI,false);
     context.moveTo(185,100);
@@ -73,7 +73,7 @@ if(drawing2.getContext){
     context2.textBaseline='top';
     context2.fillText('Hello world!',10,10);
     context2.fillText('Font size is '+fontSize+'px',10,50);
-    context2.fillText('Hello world!',10,100,100);//Ê¹µÃÎÄ±¾Ñ¹Ëõ
+    context2.fillText('Hello world!',10,100,100);//ä½¿å¾—æ–‡æœ¬å‹ç¼©
 }
 var drawing3=document.getElementById('drawing3');
 if(drawing3.getContext){
@@ -82,7 +82,7 @@ if(drawing3.getContext){
     context3.arc(100,100,95,0,2*Math.PI,false);
     context3.moveTo(185,100);
     context3.arc(100,100,85,0,2*Math.PI,false);
-    context3.translate(100,100);//ÕâÈı¸ö¶¼·ÅÔÚÇ°±ß£¬Ö»Ó°ÏìÒÔºóµÄ²Ù×÷£¬²»Ó°ÏìÇ°ÃæµÄ
+    context3.translate(100,100);//è¿™ä¸‰ä¸ªéƒ½æ”¾åœ¨å‰è¾¹ï¼Œåªå½±å“ä»¥åçš„æ“ä½œï¼Œä¸å½±å“å‰é¢çš„
     context3.rotate((Math.PI)/4);
     context3.scale(0.5,0.5);
     context3.moveTo(0,0);
@@ -131,10 +131,10 @@ if(drawing5.getContext) {
     context5.shadowOffsetY=10;
     context5.shadowBlur=4;
     var image=document.images[0];
-    //context5.drawImage(image,10,10);//Æğµã×ø±ê Í¼Ïñ´óĞ¡ÓëÔ­Í¼ÏñÏàÍ¬
-    //context5.drawImage(image,10,10,150,150);//¼ÓÉÏÄ¿±ê¿í¶ÈºÍ¸ß¶È£¬Í¼Ïñ´óĞ¡ÓëÔ­Í¼Ïñ²»Í¬
-    context5.drawImage(image,50,50,100,100,10,10,150,150);//ÔÙ¼ÓËÄ¸ö²ÎÊı£¬Ô­Í¼ÏñµÄÆğµã×ø±êºÍ¿í¶È¸ß¶È£¬·ÅÔÚÇ°Ãæ£¬Ñ¡È¡ÁË²¿·ÖÍ¼Ïñ
-    context5.drawImage(drawing4,50,50,100,100,10,10,150,150);//Ò²¿ÉÒÔÊÇcanvasÔªËØ
+    //context5.drawImage(image,10,10);//èµ·ç‚¹åæ ‡ å›¾åƒå¤§å°ä¸åŸå›¾åƒç›¸åŒ
+    //context5.drawImage(image,10,10,150,150);//åŠ ä¸Šç›®æ ‡å®½åº¦å’Œé«˜åº¦ï¼Œå›¾åƒå¤§å°ä¸åŸå›¾åƒä¸åŒ
+    context5.drawImage(image,50,50,100,100,10,10,150,150);//å†åŠ å››ä¸ªå‚æ•°ï¼ŒåŸå›¾åƒçš„èµ·ç‚¹åæ ‡å’Œå®½åº¦é«˜åº¦ï¼Œæ”¾åœ¨å‰é¢ï¼Œé€‰å–äº†éƒ¨åˆ†å›¾åƒ
+    context5.drawImage(drawing4,50,50,100,100,10,10,150,150);//ä¹Ÿå¯ä»¥æ˜¯canvaså…ƒç´ 
 }
 var drawing6=document.getElementById('drawing6');
 if(drawing6.getContext) {
@@ -222,7 +222,7 @@ if(drawing9.getContext) {
     var context9 = drawing9.getContext('2d');
     context9.fillStyle='red';
     context9.fillRect(0,0,150,150);
-    //context9.globalAlpha=0.5;//Í¸Ã÷¶È
+    //context9.globalAlpha=0.5;//é€æ˜åº¦
     context9.globalCompositeOperation='copy';
     context9.fillStyle='blue';
     context9.fillRect(50,50,150,150);
