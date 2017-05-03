@@ -31,3 +31,7 @@ element.scrollWidth
 element.scrollLeft 滚进去了多少
 element.scrollTop
 
+事件的尺寸
+e.clientX 和 e.clientY 鼠标的客户区位置，距离浏览器边缘
+e.pageX 和e.pageY 距离页面最顶部和最左部
+e.screenX 和 e.screenY 距离屏幕顶部和左部
